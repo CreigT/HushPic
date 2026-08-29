@@ -1,0 +1,15 @@
+export const BRAND = {
+  name: 'HushPic',
+  domain: 'HushPic.com',
+  url: 'https://HushPic.com',
+  fileType: 'IMAGE',
+  operator: 'Creignificent LLC',
+  job: 'Resize, compress and convert your images without uploading them anywhere.',
+  oneLiner: 'HushPic — IMAGE tools that run in your browser. Files never leave the device. 30 free uses/day. Pro for unlimited.',
+  privacyLine: 'Files never leave your device - not even us can see them',
+  supportEmail: 'CreigTerrence@gmail.com',
+  freeQuotaLimit: 30,
+  freeMaxFileSizeMB: 25,
+  proMaxFileSizeMB: 500,
+  proPriceMonthly: 9,
+} as const;

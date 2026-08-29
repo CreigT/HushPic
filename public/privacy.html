@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — HushPic.com</title>
+  <meta name="description" content="HushPic Privacy Policy. On-device local image processing guarantee.">
+  <link rel="canonical" href="https://hushpic.com/privacy.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #020617;
+      color: #f8fafc;
+      margin: 0;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    a { color: #f43f5e; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3 { color: #ffffff; }
+    h1 { font-size: 2.25rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.25rem; margin-top: 2rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; }
+    .contract-box {
+      background: linear-gradient(to bottom, #0f172a, #020617);
+      border: 1px solid #10b981;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    code {
+      background-color: #1e293b;
+      color: #fda4af;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      background: #090d16;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #1e293b;
+    }
+    th { background: #0f172a; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Back to HushPic.com</a>
+    
+    <h1>HushPic Privacy Policy</h1>
+    <p style="color: #94a3b8; font-size: 0.9rem;">
+      <strong>Effective date:</strong> August 28, 2026 &nbsp;•&nbsp; 
+      <strong>Last updated:</strong> August 28, 2026 &nbsp;•&nbsp; 
+      <strong>Service:</strong> HushPic.com &nbsp;•&nbsp; 
+      <strong>Operator:</strong> Creignificent LLC
+    </p>
+
+    <div class="contract-box">
+      <h3 style="margin-top: 0; color: #34d399;">Privacy Contract (short form)</h3>
+      <p>HushPic is a local-only image pipeline. Decoding, manipulation, and encoding run in your browser with the HTML5 Canvas API and heic2any. There is no upload endpoint for your photos. We cannot see the files you drop. Quota state stays in your browser under <code>hushpic_quota</code> and <code>hushpic_quota_date</code>.</p>
+      <p style="margin-bottom: 0;">If a future feature ever sends a file to a server, it will be labeled <strong>Cloud</strong> in the UI before it can run.</p>
+    </div>
+
+    <h2>1. Scope</h2>
+    <p>This Privacy Policy explains how HushPic (“HushPic,” “we,” “us,” “our”) handles information when you visit HushPic.com and use the in-browser tools (the “Service”).</p>
+    <p>It covers:</p>
+    <ul>
+      <li>HEIC to JPG</li>
+      <li>Compress Image</li>
+      <li>Resize for Social (Instagram, TikTok, YouTube, and other presets)</li>
+      <li>Blur Background</li>
+      <li>Studio Background Remover</li>
+      <li>Add Border & Frame</li>
+      <li>2× Upscale</li>
+      <li>Watermark</li>
+      <li>Convert Format (WebP, PNG, JPG, HEIC, BMP, SVG as supported by your browser)</li>
+      <li>Rotate & Flip</li>
+    </ul>
+    <p>It does not cover sites you use after you download a result (for example, posting the JPG to Instagram yourself).</p>
+
+    <h2>2. Core processing rule</h2>
+    <p>Every listed tool runs on-device:</p>
+    <ol>
+      <li>Your file is read in this tab.</li>
+      <li>Pixels are decoded in memory (Canvas and, when needed, heic2any).</li>
+      <li>The selected operation runs locally.</li>
+      <li>The result is encoded in this tab and offered as a download or ZIP from this tab.</li>
+    </ol>
+    <p>HushPic does not operate a server upload API for conversion, compression, resize, blur, cutout, framing, upscale, watermark, format convert, rotate, or flip.</p>
+
+    <h2>3. Information we do not collect from the tools</h2>
+    <p>We do not receive or store:</p>
+    <ul>
+      <li>Photo or video file bytes</li>
+      <li>EXIF, GPS, depth, or other embedded metadata harvested from your files</li>
+      <li>On-screen previews or before/after canvases</li>
+      <li>Face, subject, or segmentation maps from Blur Background or Studio Background Remover</li>
+      <li>Watermark text or logo files, except in local memory while that job runs</li>
+      <li>A required account for Free use</li>
+    </ul>
+    <p>When you close the tab or navigate away, in-memory pixels from that session are gone from the Service.</p>
+
+    <h2>4. Information stored only on your device</h2>
+    <p>These keys are written to <code>localStorage</code> on your browser. They do not contain images.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>hushpic_quota</code></td>
+          <td>Count of jobs finished today</td>
+        </tr>
+        <tr>
+          <td><code>hushpic_quota_date</code></td>
+          <td>Calendar date used to reset the daily count</td>
+        </tr>
+        <tr>
+          <td><code>hushpic_plan</code></td>
+          <td>Local Pro flag after a real checkout success, if billing is enabled</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>You can delete them with your browser’s site data / cookies controls. Clearing them resets quota and the local plan flag on that device.</p>
+
+    <h2>5. Information the website host may see</h2>
+    <p>Delivering the HTML, CSS, and JavaScript through a static host or CDN (for example Vercel) may create ordinary request logs: IP address, time, path, user-agent, referrer. That is how any public website is served. Those logs are not your photos and are not linked to drop-zone files.</p>
+    <p>We do not run advertising pixels. We do not run a cross-site analytics profile on tool usage. If cookieless, privacy-respecting analytics are added later, this policy will be updated first. Analytics will never include files from the drop zone.</p>
+    <p>If you email support, we receive only what you send (address, message, optional sample). Do not attach sensitive photos. Samples are deleted when the ticket is done.</p>
+
+    <h2>6. Payments</h2>
+    <p>If Pro billing is turned on, Stripe processes the subscription. Stripe receives the payment fields you enter on Stripe Checkout. Stripe does not receive your images.</p>
+    <p>Until Stripe is configured, HushPic will not collect card data and will not show a fake checkout form.</p>
+    <p>Stripe’s policy: <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">https://stripe.com/privacy</a></p>
+
+    <h2>7. Third-party scripts in the page</h2>
+    <p>Loaded only to run locally in your tab:</p>
+    <ul>
+      <li><strong>heic2any</strong> (typically via a public CDN) — HEIC/HEIF decode when the browser cannot do it natively</li>
+      <li><strong>JSZip</strong> — Pro batch ZIP, when you ask for it</li>
+      <li>Interface fonts (for example Google Fonts)</li>
+    </ul>
+    <p>Those libraries execute in your page. Image bytes are not posted to the CDN. The CDN may log that the script file itself was requested.</p>
+
+    <h2>8. Cookies</h2>
+    <p>No advertising cookies. Quota and plan use <code>localStorage</code>. The host may set a technical cookie required to serve HTTPS.</p>
+
+    <h2>9. Tool-specific notes</h2>
+    <ul>
+      <li><strong>Blur Background</strong> and <strong>Studio Background Remover</strong> compute depth or edge work in the tab. No cutout is uploaded for model inference on our servers.</li>
+      <li><strong>2× Upscale</strong> is local dimension scaling / sharpening in Canvas, not a cloud generative model.</li>
+      <li><strong>Watermark</strong> applies your text or logo in memory only.</li>
+      <li><strong>Convert Format</strong> and <strong>HEIC to JPG</strong> encode in the browser. Support for a given output (BMP, SVG, HEIC write-back) depends on what that browser can encode. Failure stays local.</li>
+      <li><strong>Rotate & Flip</strong> change pixel orientation in Canvas only.</li>
+    </ul>
+
+    <h2>10. Legal bases (EEA / UK)</h2>
+    <ul>
+      <li>Hosting logs: legitimate interests in operating and securing the site</li>
+      <li>Support email: contract or legitimate interests in answering you</li>
+      <li>Stripe: performance of a paid contract you request</li>
+      <li>Image processing: performed by you, on your device — not HushPic cloud processing</li>
+    </ul>
+
+    <h2>11. California and similar US state laws</h2>
+    <p>We do not sell personal information. We do not share personal information for cross-context behavioral advertising. We do not collect sensitive personal information from the image tools.</p>
+    <p>You may request access to or deletion of information we actually hold (usually a support email). We cannot delete photos we never received.</p>
+
+    <h2>12. Children</h2>
+    <p>The Service is not directed to children under 13, or the minimum age in your country. We do not knowingly collect their personal information.</p>
+
+    <h2>13. Retention</h2>
+    <ul>
+      <li>Images in the tab: only while the page holds them in memory</li>
+      <li><code>localStorage</code> keys: until you clear site data</li>
+      <li>Support email: until the request is resolved, then deleted or minimized</li>
+      <li>Stripe / host logs: under those providers’ rules</li>
+    </ul>
+
+    <h2>14. Security</h2>
+    <p>Use an updated browser. The public site is served over HTTPS when hosted. No transmission or device is perfectly secure. The privacy design assumes files never leave the device during a tool job.</p>
+
+    <h2>15. International hosting</h2>
+    <p>Static assets may be served from edge locations outside your country. That infrastructure still does not include drop-zone files.</p>
+
+    <h2>16. Future cloud tools</h2>
+    <p>Any feature that uploads a file will be labeled <strong>Cloud</strong> before it can run. This policy will be updated before that feature ships.</p>
+
+    <h2>17. Changes</h2>
+    <p>The Last updated date will change when this policy changes. Material changes to file handling will be stated on this page.</p>
+
+    <h2>18. Contact</h2>
+    <p>
+      Creignificent LLC<br>
+      HushPic privacy<br>
+      Email: <a href="mailto:CreigTerrence@gmail.com">CreigTerrence@gmail.com</a>
+    </p>
+    <p style="font-size: 0.85rem; color: #94a3b8;">
+      Public URL when deployed: https://hushpic.com/privacy.html<br>
+      In-app route: /#/privacy
+    </p>
+  </div>
+</body>
+</html>
