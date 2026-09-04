@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  X, 
-  Crown, 
-  Sparkles, 
-  Check, 
-  Zap, 
-  ShieldCheck, 
+import {
+  X,
+  Crown,
+  Check,
   ArrowRight,
   Lock,
   CreditCard,
-  CheckCircle2
+  CheckCircle2,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { BRAND } from '../../config/brand';
 import { setPlan } from '../lib/quota';
 
 export type PaywallReason = 'quota' | 'size' | 'pro_tool' | 'batch' | 'general';
@@ -54,7 +50,7 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
           title: 'Large File Detected (>25MB)',
           description:
             customDetails ||
-            `Free accounts support files up to 25MB. Upgrade to Pro to process large raw photos up to 500MB directly in your browser.`,
+            'Free accounts support files up to 25MB. Upgrade to Pro to process large raw photos up to 500MB directly in your browser.',
         };
       case 'pro_tool':
         return {
@@ -83,14 +79,12 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
 
   const handleSimulatedStripeCheckout = () => {
     setIsProcessing(true);
-    // Simulate Stripe Checkout session completion
     setTimeout(() => {
       const email = emailInput.trim() || 'pro-member@hushpic.com';
       setPlan('pro', email);
       setIsProcessing(false);
       setShowCheckoutSuccess(true);
-      
-      // Fire celebratory confetti
+
       confetti({
         particleCount: 100,
         spread: 70,
@@ -108,11 +102,9 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
       <div className="relative w-full max-w-lg rounded-3xl bg-slate-900 border border-slate-700/80 shadow-2xl p-6 sm:p-8 overflow-hidden">
-        {/* Glowing aura */}
         <div className="absolute -top-24 -right-24 w-60 h-60 bg-rose-500/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -left-24 w-60 h-60 bg-violet-600/20 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
@@ -133,7 +125,6 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
           </div>
         ) : (
           <div className="space-y-6">
-            {/* Header Badge */}
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/30 text-rose-300 text-xs font-bold mb-3">
                 <Crown className="w-3.5 h-3.5 fill-rose-400 text-rose-400" />
@@ -147,7 +138,6 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
               </p>
             </div>
 
-            {/* Pro Features checklist */}
             <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-2.5">
               <div className="text-xs font-bold uppercase tracking-wider text-rose-400">
                 HushPic Pro Plan Includes:
@@ -172,7 +162,6 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
               </div>
             </div>
 
-            {/* Stripe Email & Checkout form */}
             <div className="space-y-3">
               <div>
                 <label className="block text-xs font-medium text-slate-400 mb-1">
@@ -208,7 +197,6 @@ export const PaywallModal: React.FC<PaywallModalProps> = ({
               </button>
             </div>
 
-            {/* Guarantees */}
             <div className="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-800">
               <span className="flex items-center gap-1">
                 <Lock className="w-3 h-3 text-emerald-400" /> 100% Privacy guaranteed
