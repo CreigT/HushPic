@@ -2,7 +2,7 @@ import React from 'react';
 import { PricingTable } from '../components/PricingTable';
 import { FaqList } from '../components/FaqList';
 import { QuotaStatus } from '../lib/quota';
-import { ShieldCheck, Check, Zap, Sparkles, Lock, ArrowLeft } from 'lucide-react';
+import { Check, ArrowLeft } from 'lucide-react';
 
 interface PricingPageProps {
   quota: QuotaStatus;
@@ -10,11 +10,7 @@ interface PricingPageProps {
   onBack: () => void;
 }
 
-export const PricingPage: React.FC<PricingPageProps> = ({
-  quota,
-  onOpenPaywall,
-  onBack,
-}) => {
+export const PricingPage: React.FC<PricingPageProps> = ({ quota, onBack }) => {
   return (
     <div className="space-y-12 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,20 +22,11 @@ export const PricingPage: React.FC<PricingPageProps> = ({
           <span>Back to Home</span>
         </button>
 
-        <PricingTable
-          quota={quota}
-          onSelectPlan={(planId) => {
-            if (planId === 'pro') {
-              onOpenPaywall();
-            }
-          }}
-        />
+        <PricingTable quota={quota} onSelectPlan={() => {}} />
 
-        {/* Deep Comparison Feature Matrix */}
         <div className="max-w-4xl mx-auto mt-16 p-6 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-6">
-          <h3 className="text-xl font-bold text-white tracking-tight text-center">
-            Detailed Plan Comparison
-          </h3>
+          <h3 className="text-xl font-bold text-white tracking-tight text-center">Detailed Plan Comparison</h3>
+          <p className="text-xs text-slate-400 text-center">Pro features are planned but checkout is not accepting payments yet.</p>
 
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left">
@@ -47,65 +34,19 @@ export const PricingPage: React.FC<PricingPageProps> = ({
                 <tr className="border-b border-slate-800 text-slate-400 font-semibold uppercase tracking-wider">
                   <th className="py-3 px-4">Feature</th>
                   <th className="py-3 px-4">Free ($0)</th>
-                  <th className="py-3 px-4 text-rose-400">Pro ($9/mo)</th>
+                  <th className="py-3 px-4 text-rose-400">Pro ($9/mo planned)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60 text-slate-300">
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">Daily Conversions</td>
-                  <td className="py-3 px-4">3 per day (resets 00:00)</td>
-                  <td className="py-3 px-4 text-rose-300 font-bold">Unlimited</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">Max File Size</td>
-                  <td className="py-3 px-4">25MB per file</td>
-                  <td className="py-3 px-4 text-rose-300 font-bold">500MB per file</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">Browser Privacy Engine</td>
-                  <td className="py-3 px-4 text-emerald-400 flex items-center gap-1">
-                    <Check className="w-3.5 h-3.5" /> 100% In-Browser
-                  </td>
-                  <td className="py-3 px-4 text-emerald-400 flex items-center gap-1">
-                    <Check className="w-3.5 h-3.5" /> 100% In-Browser
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">iPhone HEIC to JPG</td>
-                  <td className="py-3 px-4">Included (3/day)</td>
-                  <td className="py-3 px-4 text-rose-300">Unlimited</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">Batch Convert & ZIP</td>
-                  <td className="py-3 px-4 text-slate-500">—</td>
-                  <td className="py-3 px-4 text-emerald-400 flex items-center gap-1">
-                    <Check className="w-3.5 h-3.5" /> Included
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">Background Remover</td>
-                  <td className="py-3 px-4 text-slate-500">—</td>
-                  <td className="py-3 px-4 text-emerald-400 flex items-center gap-1">
-                    <Check className="w-3.5 h-3.5" /> Included
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">2x HD Upscaler</td>
-                  <td className="py-3 px-4 text-slate-500">—</td>
-                  <td className="py-3 px-4 text-emerald-400 flex items-center gap-1">
-                    <Check className="w-3.5 h-3.5" /> Included
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">Watermarks & Ads</td>
-                  <td className="py-3 px-4">No watermarks</td>
-                  <td className="py-3 px-4 font-bold text-white">No watermarks</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-medium text-white">Billing & Cancellation</td>
-                  <td className="py-3 px-4">Free forever</td>
-                  <td className="py-3 px-4">Self-serve Stripe 1-click cancel</td>
-                </tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Daily Conversions</td><td className="py-3 px-4">3 per day</td><td className="py-3 px-4 text-rose-300 font-bold">Unlimited</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Max File Size</td><td className="py-3 px-4">25MB per file</td><td className="py-3 px-4 text-rose-300 font-bold">500MB per file</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Browser Privacy Engine</td><td className="py-3 px-4 text-emerald-400"><span className="inline-flex items-center gap-1"><Check className="w-3.5 h-3.5" />100% In-Browser</span></td><td className="py-3 px-4 text-emerald-400"><span className="inline-flex items-center gap-1"><Check className="w-3.5 h-3.5" />100% In-Browser</span></td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">iPhone HEIC to JPG</td><td className="py-3 px-4">Included (3/day)</td><td className="py-3 px-4 text-rose-300">Unlimited</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Batch Convert & ZIP</td><td className="py-3 px-4 text-slate-500">—</td><td className="py-3 px-4">Planned</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Background Remover</td><td className="py-3 px-4 text-slate-500">—</td><td className="py-3 px-4">Planned</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">2x HD Upscaler</td><td className="py-3 px-4 text-slate-500">—</td><td className="py-3 px-4">Planned</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Watermarks & Ads</td><td className="py-3 px-4">No watermarks</td><td className="py-3 px-4">No watermarks planned</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Billing</td><td className="py-3 px-4">Free</td><td className="py-3 px-4">Not live yet</td></tr>
               </tbody>
             </table>
           </div>
