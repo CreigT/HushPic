@@ -4,7 +4,6 @@ import { AppHeader } from './components/AppHeader';
 import { AppFooter } from './components/AppFooter';
 import { PaywallModal, PaywallReason } from './components/PaywallModal';
 import { SignInModal } from './components/SignInModal';
-import { AccountSheet } from './components/AccountSheet';
 import { HomePage } from './pages/HomePage';
 import { ToolsPage } from './pages/ToolsPage';
 import { PricingPage } from './pages/PricingPage';
@@ -22,10 +21,7 @@ export default function App() {
   const [paywallReason, setPaywallReason] = useState<PaywallReason>('general');
   const [paywallDetails, setPaywallDetails] = useState<string | undefined>(undefined);
   const [signInOpen, setSignInOpen] = useState(false);
-  const [accountOpen, setAccountOpen] = useState(false);
-  const [pendingFiles, setPendingFiles] = useState<File[]>([]);
 
-  // Update quota state when changes occur
   const refreshQuota = () => {
     setQuota(getQuotaStatus());
   };
@@ -37,7 +33,6 @@ export default function App() {
     return () => window.removeEventListener('hushpic_quota_updated', handleQuotaUpdate);
   }, []);
 
-  // Listen to browser popstate / hashchange / back-forward
   useEffect(() => {
     const handleLocationChange = () => {
       let path = window.location.pathname || '/';
@@ -74,24 +69,21 @@ export default function App() {
     setPaywallOpen(true);
   };
 
-  // When files are dropped directly on homepage dropzone:
   const handleHomepageFilesDropped = (files: File[]) => {
     if (files.length === 0) return;
     const firstFile = files[0];
     const fileName = firstFile.name.toLowerCase();
-    
-    // Auto-route to the best matching tool based on file
+
     let targetSlug = 'compress';
     if (fileName.endsWith('.heic') || fileName.endsWith('.heif')) {
       targetSlug = 'heic-to-jpg';
     } else if (fileName.endsWith('.png') || fileName.endsWith('.webp')) {
       targetSlug = 'compress';
     }
-    
+
     navigate(`/tools/${targetSlug}`);
   };
 
-  // Resolve active tool if route is /tools/:slug
   let activeTool = null;
   if (currentRoute.startsWith('/tools/')) {
     const slug = currentRoute.replace('/tools/', '').split('/')[0];
@@ -100,10 +92,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#020617] text-[#f8fafc]">
-      {/* 1. PromoBar (One line only: Launch Offer: Get Pro for $9/mo - View Offer -> /pricing) */}
       <PromoBar onNavigate={navigate} />
 
-      {/* 2. AppHeader */}
       <AppHeader
         currentRoute={currentRoute}
         onNavigate={navigate}
@@ -119,9 +109,7 @@ export default function App() {
         }}
       />
 
-      {/* Main Page Router Views */}
       <main className="flex-1">
-        {/* HOMEPAGE */}
         {currentRoute === '/' && (
           <HomePage
             onNavigate={navigate}
@@ -131,12 +119,10 @@ export default function App() {
           />
         )}
 
-        {/* ALL TOOLS CATALOG */}
         {currentRoute === '/tools' && (
           <ToolsPage onSelectTool={(slug) => navigate(`/tools/${slug}`)} />
         )}
 
-        {/* WORKSPACE SHELL (every /tools/{slug} same chrome) */}
         {currentRoute.startsWith('/tools/') && activeTool && (
           <ToolWorkspace
             tool={activeTool}
@@ -146,7 +132,6 @@ export default function App() {
           />
         )}
 
-        {/* PRICING PAGE */}
         {currentRoute === '/pricing' && (
           <PricingPage
             quota={quota}
@@ -155,7 +140,6 @@ export default function App() {
           />
         )}
 
-        {/* SIGN IN / SIGN UP */}
         {(currentRoute === '/signin' || currentRoute === '/signup') && (
           <div className="py-12">
             <SignInModal
@@ -169,7 +153,6 @@ export default function App() {
           </div>
         )}
 
-        {/* ACCOUNT PAGE (Guests cannot see Dashboard or Vault. Only signed-in see Account) */}
         {currentRoute === '/account' && (
           <AccountPage
             quota={quota}
@@ -179,21 +162,17 @@ export default function App() {
           />
         )}
 
-        {/* PRIVACY POLICY */}
         {currentRoute === '/privacy' && (
           <PrivacyPage onBack={() => navigate('/')} />
         )}
 
-        {/* TERMS OF SERVICE */}
         {currentRoute === '/terms' && (
           <TermsPage onBack={() => navigate('/')} />
         )}
       </main>
 
-      {/* 11. Footer: Privacy, Terms, Support, canonical HushPic.com, OG HushPic.com */}
       <AppFooter onNavigate={navigate} />
 
-      {/* GLOBAL MODALS */}
       <PaywallModal
         isOpen={paywallOpen}
         onClose={() => setPaywallOpen(false)}
@@ -209,16 +188,6 @@ export default function App() {
         onClose={() => setSignInOpen(false)}
         onSuccess={() => {
           refreshQuota();
-        }}
-      />
-
-      <AccountSheet
-        isOpen={accountOpen}
-        onClose={() => setAccountOpen(false)}
-        quota={quota}
-        onOpenPaywall={() => {
-          setAccountOpen(false);
-          handleOpenPaywall('general');
         }}
       />
     </div>
