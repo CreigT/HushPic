@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { X, Lock, Mail, ArrowRight, ShieldCheck } from 'lucide-react';
-import { setPlan } from '../lib/quota';
 
 interface SignInModalProps {
   isOpen: boolean;
@@ -24,7 +23,6 @@ export const SignInModal: React.FC<SignInModalProps> = ({
 
     setIsSubmitting(true);
     setTimeout(() => {
-      // Save user session
       localStorage.setItem('hushpic_user_email', email);
       setIsSubmitting(false);
       onSuccess();
@@ -38,6 +36,7 @@ export const SignInModal: React.FC<SignInModalProps> = ({
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+          aria-label="Close sign in"
         >
           <X className="w-5 h-5" />
         </button>
