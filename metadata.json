@@ -1,6 +1,6 @@
 {
   "name": "HushPic",
-  "description": "HushPic — Privacy-first IMAGE tools that run in your browser. Files never leave your device. 3 free uses/day. Pro for unlimited.",
+  "description": "HushPic — Privacy-first IMAGE tools that run in your browser. Files never leave your device. 3 free uses/day.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
