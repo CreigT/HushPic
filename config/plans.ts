@@ -19,12 +19,12 @@ export const PLANS: Plan[] = [
     name: 'Free',
     price: 0,
     period: 'forever',
-    description: 'Essential image utilities running 100% in your browser.',
+    description: 'Essential image utilities with local browser image processing.',
     features: [
       '3 free conversions per day',
       '25MB max file size',
-      '100% client-side privacy',
-      'Zero cloud uploads',
+      'Image bytes processed locally',
+      'No image upload for processing',
       'Core conversion & compression',
       'No watermark'
     ],
@@ -40,15 +40,15 @@ export const PLANS: Plan[] = [
     period: 'per month',
     badge: 'Unlimited Power',
     popular: true,
-    description: 'Unlimited volume, batch operations, and pro AI filters.',
+    description: 'Unlimited daily usage, batch operations, and Pro image tools.',
     features: [
       'Unlimited conversions every day',
-      '500MB max file size',
+      'Up to 500MB max file size*',
       'Batch processing with ZIP download',
-      'Background Remover & 2x HD Upscaler',
-      'Highest quality rendering mode',
-      'Never uploads to servers',
-      'Priority support'
+      'Background removal & 2x image upscaling',
+      'High-quality local rendering',
+      'Image bytes stay local during processing',
+      'Stripe Customer Portal billing controls'
     ],
     maxFileSizeMB: 500,
     dailyQuota: 'Unlimited',

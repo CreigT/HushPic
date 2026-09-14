@@ -10,49 +10,35 @@ interface PricingPageProps {
   onBack: () => void;
 }
 
-export const PricingPage: React.FC<PricingPageProps> = ({ quota, onBack }) => {
+export const PricingPage: React.FC<PricingPageProps> = ({ quota, onOpenPaywall, onBack }) => {
   return (
     <div className="space-y-12 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <button
-          onClick={onBack}
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer group mb-6"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span>Back to Home</span>
-        </button>
+        <button onClick={onBack} className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-400 hover:text-white transition-colors cursor-pointer group mb-6"><ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /><span>Back to Home</span></button>
 
-        <PricingTable quota={quota} onSelectPlan={() => {}} />
+        <PricingTable quota={quota} onSelectPlan={(planId) => { if (planId === 'pro') onOpenPaywall(); }} />
 
         <div className="max-w-4xl mx-auto mt-16 p-6 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-6">
           <h3 className="text-xl font-bold text-white tracking-tight text-center">Detailed Plan Comparison</h3>
-          <p className="text-xs text-slate-400 text-center">Pro features are planned but checkout is not accepting payments yet.</p>
+          <p className="text-xs text-slate-400 text-center">Paid access is verified from Stripe subscription state; image processing remains local in your browser.</p>
 
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left">
-              <thead>
-                <tr className="border-b border-slate-800 text-slate-400 font-semibold uppercase tracking-wider">
-                  <th className="py-3 px-4">Feature</th>
-                  <th className="py-3 px-4">Free ($0)</th>
-                  <th className="py-3 px-4 text-rose-400">Pro ($9/mo planned)</th>
-                </tr>
-              </thead>
+              <thead><tr className="border-b border-slate-800 text-slate-400 font-semibold uppercase tracking-wider"><th className="py-3 px-4">Feature</th><th className="py-3 px-4">Free ($0)</th><th className="py-3 px-4 text-rose-400">Pro ($9/mo)</th></tr></thead>
               <tbody className="divide-y divide-slate-800/60 text-slate-300">
                 <tr><td className="py-3 px-4 font-medium text-white">Daily Conversions</td><td className="py-3 px-4">3 per day</td><td className="py-3 px-4 text-rose-300 font-bold">Unlimited</td></tr>
-                <tr><td className="py-3 px-4 font-medium text-white">Max File Size</td><td className="py-3 px-4">25MB per file</td><td className="py-3 px-4 text-rose-300 font-bold">500MB per file</td></tr>
-                <tr><td className="py-3 px-4 font-medium text-white">Browser Privacy Engine</td><td className="py-3 px-4 text-emerald-400"><span className="inline-flex items-center gap-1"><Check className="w-3.5 h-3.5" />100% In-Browser</span></td><td className="py-3 px-4 text-emerald-400"><span className="inline-flex items-center gap-1"><Check className="w-3.5 h-3.5" />100% In-Browser</span></td></tr>
-                <tr><td className="py-3 px-4 font-medium text-white">iPhone HEIC to JPG</td><td className="py-3 px-4">Included (3/day)</td><td className="py-3 px-4 text-rose-300">Unlimited</td></tr>
-                <tr><td className="py-3 px-4 font-medium text-white">Batch Convert & ZIP</td><td className="py-3 px-4 text-slate-500">—</td><td className="py-3 px-4">Planned</td></tr>
-                <tr><td className="py-3 px-4 font-medium text-white">Background Remover</td><td className="py-3 px-4 text-slate-500">—</td><td className="py-3 px-4">Planned</td></tr>
-                <tr><td className="py-3 px-4 font-medium text-white">2x HD Upscaler</td><td className="py-3 px-4 text-slate-500">—</td><td className="py-3 px-4">Planned</td></tr>
-                <tr><td className="py-3 px-4 font-medium text-white">Watermarks & Ads</td><td className="py-3 px-4">No watermarks</td><td className="py-3 px-4">No watermarks planned</td></tr>
-                <tr><td className="py-3 px-4 font-medium text-white">Billing</td><td className="py-3 px-4">Free</td><td className="py-3 px-4">Not live yet</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Max File Size</td><td className="py-3 px-4">25MB per file</td><td className="py-3 px-4 text-rose-300 font-bold">Up to 500MB*</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Local Image Processing</td><td className="py-3 px-4 text-emerald-400"><span className="inline-flex items-center gap-1"><Check className="w-3.5 h-3.5" />Included</span></td><td className="py-3 px-4 text-emerald-400"><span className="inline-flex items-center gap-1"><Check className="w-3.5 h-3.5" />Included</span></td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">iPhone HEIC to JPG</td><td className="py-3 px-4">Included</td><td className="py-3 px-4">Unlimited</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Batch Convert & ZIP</td><td className="py-3 px-4 text-slate-500">—</td><td className="py-3 px-4">Included</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Pro Image Tools</td><td className="py-3 px-4 text-slate-500">—</td><td className="py-3 px-4">Included</td></tr>
+                <tr><td className="py-3 px-4 font-medium text-white">Billing Management</td><td className="py-3 px-4">None</td><td className="py-3 px-4">Stripe Customer Portal</td></tr>
               </tbody>
             </table>
           </div>
+          <p className="text-[11px] text-slate-500 text-center">*Large files depend on browser and device memory. HushPic does not guarantee every device can process a 500MB image.</p>
         </div>
       </div>
-
       <FaqList />
     </div>
   );
