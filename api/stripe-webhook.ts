@@ -11,11 +11,16 @@ async function upsertSubscription(subscription: Stripe.Subscription) {
   if (!uid) return;
 
   const customerId = typeof subscription.customer === 'string' ? subscription.customer : subscription.customer.id;
+  const periodEnds = subscription.items.data
+    .map((item) => item.current_period_end)
+    .filter((value): value is number => typeof value === 'number');
+  const currentPeriodEnd = periodEnds.length ? Math.max(...periodEnds) : null;
+
   await adminDb().collection('users').doc(uid).set({
     stripeCustomerId: customerId,
     stripeSubscriptionId: subscription.id,
     subscriptionStatus: subscription.status,
-    currentPeriodEnd: subscription.current_period_end ? new Date(subscription.current_period_end * 1000).toISOString() : null,
+    currentPeriodEnd: currentPeriodEnd ? new Date(currentPeriodEnd * 1000).toISOString() : null,
     cancelAtPeriodEnd: Boolean(subscription.cancel_at_period_end),
     updatedAt: new Date().toISOString(),
   }, { merge: true });
